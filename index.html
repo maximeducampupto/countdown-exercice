@@ -14,16 +14,33 @@
 <div id="outer-container">
     <div id="container">
         <div id="timer">
-            <div id="time"></div>
+            <div id="test">00</div>
+            <div id="timer-minutes">00</div>
+            <span>:</span>
+            <div id="timer-seconds">00</div>
         </div>
 
         <div id="buttons">
-            <button id="reset-button">Reset</button>
             <button id="set-timer-button">Set Timer</button>
             <button id="start-button">Start</button>
+            <button id="stop-button">Stop</button>
+            <button id="reset-button">Reset</button>
         </div>
+
+        <div id="input-field">
+            <div>
+                <span>Mins:</span><input type="text" id="user-minutes">
+            </div>
+            <div>
+                <span>Secs:</span><input type="text" id="user-seconds">
+            </div>
+            <button id="send">Set Timer</button>
+        </div>
+
     </div>
 </div>
+
+
 
 
 <script src="js/script.js"></script>

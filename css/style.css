@@ -9,7 +9,6 @@
 body {
     background: #323232;
 }
-
 #outer-container {
     width: 60%;
     height: 60vh;
@@ -51,7 +50,7 @@ body {
     align-items: center;
 }
 
-#buttons button  {
+#buttons button, #input-field button  {
     background: cyan;
     border: none;
     height: 3rem;
@@ -62,12 +61,56 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
-#buttons button:hover {
+#buttons button:hover, #input-field button:hover {
     cursor: pointer;
 }
 
-#time {
+#timer-hours, #timer-minutes, #timer-seconds, #timer span{
     font-size: 7rem;
     color: cyan;
     font-weight: bold;
 }
+
+#input-field {
+    height: 200px;
+    width: 50%;
+    display : none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-field span {
+    height: 2.8rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: cyan;
+    margin-right: 20px;
+}
+
+#input-field input {
+    width: 60px;
+    border: none;
+    height: 4rem;
+    font-size: 2rem;
+    color: cyan;
+    background: black;
+    outline: none;
+    border-bottom: 2px solid cyan;
+}
+
+#input-field input::placeholder {
+    color: rgba(0, 255, 255, 0.56);
+    font-style: italic;
+}
+
+#input-field div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#input-field button {
+    margin-top: 20px;
+}
+
