@@ -9,7 +9,8 @@ let minutesContainer = document.getElementById('timer-minutes'),
     timer,
     minutes = null,
     seconds = null,
-    running = false;
+    running = false,
+    stopped = false;
 
 minutesContainer.innerHTML = '05';
 secondsContainer.innerHTML = '00';
@@ -56,11 +57,14 @@ function loop()
 startButton.addEventListener('click', function() {
     if (!running) {
         running = true;
+        stopped = false;
         loop();
     }
 });
+
 stopButton.addEventListener('click', function() {
     running = false;
+    stopped = true;
     clearTimeout(timer);
 });
 
@@ -74,47 +78,51 @@ resetButton.addEventListener('click', function() {
 });
 
 setTimerButton.addEventListener('click', function() {
-    document.getElementById('timer').style.display = "none";
-    document.getElementById('buttons').style.display = "none";
-    document.getElementById('container').style.justifyContent = "center";
-    document.getElementById('input-field').style.display = "flex";
+    if (!running && !stopped)
+    {
+        stopped = false;
+        document.getElementById('timer').style.display = "none";
+        document.getElementById('buttons').style.display = "none";
+        document.getElementById('container').style.justifyContent = "center";
+        document.getElementById('input-field').style.display = "flex";
 
-    document.getElementById('send').addEventListener('click', function() {
-        let valid = /^[0-9]+$/,
-            userMinutes = document.getElementById('user-minutes'),
-            userSeconds = document.getElementById('user-seconds');
+        document.getElementById('send').addEventListener('click', function() {
+            let valid = /^[0-9]+$/,
+                userMinutes = document.getElementById('user-minutes'),
+                userSeconds = document.getElementById('user-seconds');
 
-        if (userMinutes.value.match(valid) || userMinutes.value === "")
-        {
-            if (userMinutes.value !== "") {
-                minutes = userMinutes.value;
+            if (userMinutes.value.match(valid) || userMinutes.value === "")
+            {
+                if (userMinutes.value !== "") {
+                    minutes = userMinutes.value;
+                } else {
+                    minutes = 0;
+                }
             } else {
-                minutes = 0;
+                alert('incorrect');
             }
-        } else {
-            alert('incorrect');
-        }
 
-        if (userSeconds.value.match(valid) || userSeconds.value === "")
-        {
-            if (userSeconds.value !== "") {
-                seconds = userSeconds.value;
+            if (userSeconds.value.match(valid) || userSeconds.value === "")
+            {
+                if (userSeconds.value !== "") {
+                    seconds = userSeconds.value;
+                } else {
+                    seconds = 0;
+                }
             } else {
-                seconds = 0;
+                alert('incorrect');
             }
-        } else {
-            alert('incorrect');
-        }
 
-        from = parseInt((minutes * 60)) + parseInt(seconds);
+            from = parseInt((minutes * 60)) + parseInt(seconds);
 
-        minutesContainer.innerHTML = getMinutes();
-        secondsContainer.innerHTML = getSeconds();
+            minutesContainer.innerHTML = getMinutes();
+            secondsContainer.innerHTML = getSeconds();
 
-        document.getElementById('timer').style.display = "flex";
-        document.getElementById('buttons').style.display = "flex";
-        document.getElementById('container').style.justifyContent = "space-between";
-        document.getElementById('input-field').style.display = "none";
+            document.getElementById('timer').style.display = "flex";
+            document.getElementById('buttons').style.display = "flex";
+            document.getElementById('container').style.justifyContent = "space-between";
+            document.getElementById('input-field').style.display = "none";
 
-    });
+        });
+    }
 });
