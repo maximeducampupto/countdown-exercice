@@ -7,6 +7,8 @@ let minutesContainer = document.getElementById('timer-minutes'),
     counter = 0,
     from = 300,
     timer,
+    minutes = null,
+    seconds = null,
     running = false;
 
 minutesContainer.innerHTML = '05';
@@ -67,14 +69,52 @@ resetButton.addEventListener('click', function() {
    clearTimeout(timer);
    counter = 0;
    from = 300;
-   minutesContainer.innerHTML = "05";
-   secondsContainer.innerHTML = "00";
+    minutesContainer.innerHTML = getMinutes();
+    secondsContainer.innerHTML = getSeconds();
 });
 
 setTimerButton.addEventListener('click', function() {
     document.getElementById('timer').style.display = "none";
     document.getElementById('buttons').style.display = "none";
     document.getElementById('container').style.justifyContent = "center";
-   document.getElementById('input-field').style.display = "flex";
+    document.getElementById('input-field').style.display = "flex";
 
+    document.getElementById('send').addEventListener('click', function() {
+        let valid = /^[0-9]+$/,
+            userMinutes = document.getElementById('user-minutes'),
+            userSeconds = document.getElementById('user-seconds');
+
+        if (userMinutes.value.match(valid) || userMinutes.value === "")
+        {
+            if (userMinutes.value !== "") {
+                minutes = userMinutes.value;
+            } else {
+                minutes = 0;
+            }
+        } else {
+            alert('incorrect');
+        }
+
+        if (userSeconds.value.match(valid) || userSeconds.value === "")
+        {
+            if (userSeconds.value !== "") {
+                seconds = userSeconds.value;
+            } else {
+                seconds = 0;
+            }
+        } else {
+            alert('incorrect');
+        }
+
+        from = parseInt((minutes * 60)) + parseInt(seconds);
+
+        minutesContainer.innerHTML = getMinutes();
+        secondsContainer.innerHTML = getSeconds();
+
+        document.getElementById('timer').style.display = "flex";
+        document.getElementById('buttons').style.display = "flex";
+        document.getElementById('container').style.justifyContent = "space-between";
+        document.getElementById('input-field').style.display = "none";
+
+    });
 });

@@ -21,20 +21,38 @@
         </div>
 
         <div id="buttons">
-            <button id="set-timer-button">Set Timer</button>
-            <button id="start-button">Start</button>
-            <button id="stop-button">Stop</button>
-            <button id="reset-button">Reset</button>
+            <div class="button">
+                <button id="set-timer-button"></button>
+                <label for="set-timer-button">Set Timer</label>
+            </div>
+            <div class="button">
+                <button id="start-button"></button>
+                <label for="start-button">Start</label>
+            </div>
+            <div class="button">
+                <button id="stop-button"></button>
+                <label for="stop-button">Stop</label>
+            </div>
+            <div class="button">
+                <button id="reset-button"></button>
+                <label for="reset-button">Reset</label>
+            </div>
         </div>
 
         <div id="input-field">
             <div>
-                <span>Mins:</span><input type="text" id="user-minutes">
+                <label for="user-minutes">Mins:</label>
+                <input type="text" id="user-minutes" maxlength="2">
             </div>
             <div>
-                <span>Secs:</span><input type="text" id="user-seconds">
+                <label for="user-seconds">Secs:</label>
+                <input type="text" id="user-seconds" maxlength="2">
             </div>
-            <button id="send">Set Timer</button>
+
+            <div>
+                <button id="send"></button>
+                <label for="send">Set Timer</label>
+            </div>
         </div>
 
     </div>
