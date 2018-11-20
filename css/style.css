@@ -1,141 +1,142 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Wallpoet');
 
+
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
 }
 
 body {
     background: #323232;
 }
+
 #outer-container {
-    width: 60%;
-    height: 60vh;
+    width: 1000px;
+    height: 400px;
     background: black;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     border-radius: 20px;
-    margin: 15% auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 
 #container {
-    width: 99.5%;
-    height: 99.5%;
-    background: black;
+    border: 3px solid white;
     border-radius: 20px;
-    border: 4px solid #bcbcbc;
+    width: 99%;
+    height: 98%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 3rem;
-    box-sizing: border-box;
+    justify-content: center;
     align-items: center;
 }
 
 #timer {
-    width: 100%;
-    margin: 10rem auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#buttons {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#buttons button, #input-field button  {
-    background: cyan;
-    border: none;
-    height: 4rem;
-    width: 4rem;
-    color: rgba(255, 255, 255, 1);
-    border-radius: 50%;
-}
-
-#buttons button[id="stop-button"] {
-    background: #ff4f56;
-}
-
-#buttons button:hover, #input-field button:hover {
-    cursor: pointer;
-}
-
-#timer-hours, #timer-minutes, #timer-seconds, #timer span{
-    font-size: 7rem;
+    font-size: 8rem;
     color: cyan;
     font-family: 'Wallpoet', cursive;
 }
 
-.button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.button label {
-    color: cyan;
-    padding-top: 20px;
-    font-size: 1.4rem;
-    font-weight: bold;
- }
-
-#input-field {
-    display: none;
-    width: 120px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#input-field div {
-    width: 100%;
+#buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 450px;
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-#input-field input {
-    padding-left: 5px;
-    height: 3rem;
-    width: 40px;
-    background: black;
+#buttons button {
+    width: 50px;
+    height: 50px;
+    background: cyan;
+    border-radius: 50%;
     border: none;
-    border-bottom: 2px solid cyan;
-    color: cyan;
-    font-size: 1.5rem;
     outline: none;
 }
 
-#input-field label {
+#buttons button[id='stop-button'] {
+    background: #ff4f56;
+}
+
+#buttons button:hover {
+    cursor: pointer;
+}
+
+#buttons label {
     color: cyan;
-    font-size: 1.5rem;
-}
-
-#input-field div:nth-child(2) {
-    margin-top: 2rem;
-}
-
-#input-field div:nth-child(3) {
-    flex-direction: column;
-}
-
-#input-field div:nth-child(3) {
-    flex-direction: column;
-    margin-top: 40px;
-}
-#input-field div:nth-child(3) label {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-top: 10px;
 }
 
-button:focus {
-    outline: none;
+#buttons div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-field {
+    position: absolute;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2rem;
+    color: cyan;
+    display: none;
+}
+
+#input-field div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#send-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#input-field label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+#send-container label {
+    font-size: 1.4rem;
+}
+
+#input-field button {
+    width: 40px;
+    height: 40px;
+    background: cyan;
+    border-radius: 50%;
+    border: none;
+}
+
+#input-field button:hover {
+    cursor: pointer;
+}
+
+#input-field input {
+    background: black;
+    border: none;
+    width: 40px;
+    border-bottom: 1px solid cyan;
+    color: cyan;
+    font-size: 1.4rem;
+    padding: 5px 20px;
+
 }

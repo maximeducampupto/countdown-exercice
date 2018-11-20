@@ -26,7 +26,7 @@ function hideInputField()
 {
     document.getElementById('timer').style.display = "flex";
     document.getElementById('buttons').style.display = "flex";
-    document.getElementById('container').style.justifyContent = "space-between";
+    document.getElementById('container').style.justifyContent = "center";
     document.getElementById('input-field').style.display = "none";
 }
 
@@ -116,7 +116,7 @@ setTimerButton.addEventListener('click', function() {
                     minutes = 0;
                 }
             } else {
-                alert('incorrect');
+                alert('** Message d\'erreur à faire **');
             }
 
             if (userSeconds.value.match(valid) || userSeconds.value === "")
@@ -127,7 +127,7 @@ setTimerButton.addEventListener('click', function() {
                     seconds = 0;
                 }
             } else {
-                alert('incorrect');
+                alert('** Message d\'erreur à faire **');
             }
 
             from = parseInt((minutes * 60)) + parseInt(seconds);
