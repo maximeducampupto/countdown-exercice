@@ -12,8 +12,29 @@ let minutesContainer = document.getElementById('timer-minutes'),
     running = false,
     stopped = false;
 
-minutesContainer.innerHTML = '05';
-secondsContainer.innerHTML = '00';
+update();
+
+function showInputField()
+{
+    document.getElementById('timer').style.display = "none";
+    document.getElementById('buttons').style.display = "none";
+    document.getElementById('container').style.justifyContent = "center";
+    document.getElementById('input-field').style.display = "flex";
+}
+
+function hideInputField()
+{
+    document.getElementById('timer').style.display = "flex";
+    document.getElementById('buttons').style.display = "flex";
+    document.getElementById('container').style.justifyContent = "space-between";
+    document.getElementById('input-field').style.display = "none";
+}
+
+function update()
+{
+    minutesContainer.innerHTML = getMinutes();
+    secondsContainer.innerHTML = getSeconds();
+}
 
 function getMinutes()
 {
@@ -47,8 +68,7 @@ function loop()
        timer = setTimeout(function()
        {
            counter++;
-           minutesContainer.innerHTML = getMinutes();
-           secondsContainer.innerHTML = getSeconds();
+           update();
            loop();
        }, 1000);
    }
@@ -73,18 +93,15 @@ resetButton.addEventListener('click', function() {
    clearTimeout(timer);
    counter = 0;
    from = 300;
-    minutesContainer.innerHTML = getMinutes();
-    secondsContainer.innerHTML = getSeconds();
+   update();
 });
 
 setTimerButton.addEventListener('click', function() {
     if (!running && !stopped)
     {
         stopped = false;
-        document.getElementById('timer').style.display = "none";
-        document.getElementById('buttons').style.display = "none";
-        document.getElementById('container').style.justifyContent = "center";
-        document.getElementById('input-field').style.display = "flex";
+
+        showInputField();
 
         document.getElementById('send').addEventListener('click', function() {
             let valid = /^[0-9]+$/,
@@ -115,13 +132,9 @@ setTimerButton.addEventListener('click', function() {
 
             from = parseInt((minutes * 60)) + parseInt(seconds);
 
-            minutesContainer.innerHTML = getMinutes();
-            secondsContainer.innerHTML = getSeconds();
+            update();
 
-            document.getElementById('timer').style.display = "flex";
-            document.getElementById('buttons').style.display = "flex";
-            document.getElementById('container').style.justifyContent = "space-between";
-            document.getElementById('input-field').style.display = "none";
+            hideInputField();
 
         });
     }
